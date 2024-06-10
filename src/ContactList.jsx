@@ -6,7 +6,7 @@ const ContactList = ({contacts, updateContact, updateCallback}) => {
           const options = {
             method: "DELETE"
           }
-          const response = await fetch(`http://127.0.0.1:5000/delete_contact/${id}`, options)
+          const response = await fetch(`https://aws-flask-app.manuelprojectsinaws.com/delete_contact/${id}`, options)
           if (response.ok) {
             updateCallback()
             alert("Contact deleted successfully")
