@@ -21,12 +21,10 @@ const Login = () => {
     try {
       const response = await axios.post(url, options)
       if (response.status === 200) {
-        const data = await response.json()
-        localStorage.setItem("token", data.access_token)
+        localStorage.setItem("token", response.data.access_token)
         navigate("/contacts")
       } else {
-        const data = await response.json()
-        alert("Invalid credentials. Please try again.", data.message)
+        alert("Invalid credentials. Please try again.", response.data.message)
       }
     } catch (error) {
       alert("An error occurred. Please try again later.")
