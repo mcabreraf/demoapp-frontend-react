@@ -9,7 +9,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const url = "http://127.0.0.1:5000/register"
+    const url = "https://aws-flask-app.manuelprojectsinaws.com/register"
     const options = {
       method: "POST",
       headers: {

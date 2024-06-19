@@ -17,7 +17,7 @@ const Contacts = () => {
     const token = localStorage.getItem("token")
     if (!token) return navigate("/login")
 
-    const url = 'http://127.0.0.1:5000/contacts'
+    const url = 'https://aws-flask-app.manuelprojectsinaws.com/contacts'
     const options = {
       method: 'GET',
       headers: {

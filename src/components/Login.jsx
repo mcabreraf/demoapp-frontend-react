@@ -41,7 +41,7 @@ const Login = () => {
   const checkToken = async (navigate) => {
     const token = localStorage.getItem("token")
     if (token) {
-      const url = "http://127.0.0.1:5000/validate-token"
+      const url = "https://aws-flask-app.manuelprojectsinaws.com/validate-token"
       const options = {
         method: "GET",
         headers: {

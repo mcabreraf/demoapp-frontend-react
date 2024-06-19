@@ -21,8 +21,7 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
         email
       }
 
-      //const url = "https://aws-flask-app.manuelprojectsinaws.com/" + (updating ? "update_contact/" + existingContact.id : "create_contact")
-      const url = "http://127.0.0.1:5000/" + (updating ? "update_contact/" + existingContact.id : "create_contact")
+      const url = "https://aws-flask-app.manuelprojectsinaws.com/" + (updating ? "update_contact/" + existingContact.id : "create_contact")
       const options = {
         method: updating ? "PATCH" : "POST",
         headers: {

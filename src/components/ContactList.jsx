@@ -6,8 +6,7 @@ const ContactList = ({contacts, updateContact, updateCallback}) => {
   const onDelete = async (id) => {
     const token = localStorage.getItem("token")
     if (!token) return navigate("/login")
-    //const url = `https://aws-flask-app.manuelprojectsinaws.com/delete_contact/${id}`
-    const url = `http://127.0.0.1:5000/delete_contact/${id}`
+    const url = `https://aws-flask-app.manuelprojectsinaws.com/delete_contact/${id}`
     const options = {
       method: "DELETE",
       headers: {
