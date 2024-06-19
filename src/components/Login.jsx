@@ -16,7 +16,8 @@ const Login = () => {
     const options = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       },
       body: JSON.stringify({
         username,
@@ -33,7 +34,7 @@ const Login = () => {
         const data = await response.json()
         alert("Invalid credentials. Please try again.", data.message)
       }
-  } catch (error) {
+    } catch (error) {
       alert("An error occurred. Please try again later.")
     }
   }
