@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Login = () => {
   const [username, setUsername] = useState("")
@@ -14,18 +15,12 @@ const Login = () => {
     e.preventDefault()
     const url = "https://aws-flask-app.manuelprojectsinaws.com/login"
     const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
         username,
         password
-      })
     }
     try {
-      const response = await fetch(url, options)
-      if (response.ok) {
+      const response = await axios.post(url, options)
+      if (response.status === 200) {
         const data = await response.json()
         localStorage.setItem("token", data.access_token)
         navigate("/contacts")
