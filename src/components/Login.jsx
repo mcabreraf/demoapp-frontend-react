@@ -15,8 +15,8 @@ const Login = () => {
     e.preventDefault()
     const url = "https://aws-flask-app.manuelprojectsinaws.com/login"
     const options = {
-        username,
-        password
+        username: username,
+        password: password
     }
     try {
       const response = await axios.post(url, options)
