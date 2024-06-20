@@ -16,12 +16,6 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
       const token = localStorage.getItem("token")
       if (!token) return navigate("/login")
 
-      const data = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email
-      }
-
       const url = "https://aws-flask-app.manuelprojectsinaws.com/" + (updating ? "update_contact/" + existingContact.id : "create_contact")
       const options = {
         method: updating ? "PATCH" : "POST",
@@ -29,8 +23,13 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify(data)
+        data: {
+          firstName: firstName,
+          lastName: lastName,
+          email: email
+        }
       }
+      
       try {
         const response = await axios(url, options);
 
