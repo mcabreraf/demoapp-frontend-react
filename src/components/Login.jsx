@@ -36,9 +36,9 @@ const Login = () => {
       }
     } catch (error) {
       if (retryAttempt <= 3) {
-        const delay = 1000 * Math.pow(2, retryAttempt - 1); // exponential backoff
+        const delay = 500 * Math.pow(2, retryAttempt - 1);
         await new Promise((resolve) => setTimeout(resolve, delay));
-        handleSubmit(e, retryAttempt + 1); // retry with incremented attempt count
+        handleSubmit(e, retryAttempt + 1);
       } else {
         alert('Failed to log in after multiple attempts. Please try again later.');
       }
