@@ -17,9 +17,9 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
       if (!token) return navigate("/login")
 
       const data = {
-        firstName,
-        lastName,
-        email
+        firstName: firstName,
+        lastName: lastName,
+        email: email
       }
 
       const url = "https://aws-flask-app.manuelprojectsinaws.com/" + (updating ? "update_contact/" + existingContact.id : "create_contact")
@@ -38,8 +38,7 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
           updateCallback()
           alert("Contact " + (updating ? "updated" : "created") + " successfully")
         } else {
-          const data = await response.json()
-          alert(data.message)
+          alert(response.data.message)
         }
       } catch (error) {
         alert("An error occurred", error)

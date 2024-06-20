@@ -20,8 +20,7 @@ const ContactList = ({contacts, updateContact, updateCallback}) => {
         updateCallback()
         alert("Contact deleted successfully")
       } else {
-        const data = await response.json()
-        alert(data.message)
+        alert(response.data.message)
       }
     } catch (error) {
       console.error("An error occurred", error)
