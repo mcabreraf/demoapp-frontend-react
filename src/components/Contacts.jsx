@@ -22,6 +22,7 @@ const Contacts = () => {
     const options = {
       method: 'GET',
       headers: {
+        'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       }
     }

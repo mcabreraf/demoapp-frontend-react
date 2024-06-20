@@ -51,6 +51,7 @@ const Login = () => {
       const url = 'https://aws-flask-app.manuelprojectsinaws.com/validate-token'
       const options = {
         headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
       };

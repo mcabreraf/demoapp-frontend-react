@@ -11,6 +11,7 @@ const ContactList = ({contacts, updateContact, updateCallback}) => {
     const options = {
       method: "DELETE",
       headers: {
+        'Content-Type': 'application/json',
         "Authorization": `Bearer ${token}`
       }
     }
