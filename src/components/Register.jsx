@@ -17,16 +17,16 @@ const Register = () => {
         "Content-Type": "application/json",
       },
       data: {
-        username,
-        password,
-        fullName,
+        username: username,
+        password: password,
+        fullName: fullName,
       },
     };
 
     try {
       const response = await axios(url, options);
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         const data = response.data;
         alert(data.message, "Please login to continue.");
         navigate("/login");

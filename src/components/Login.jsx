@@ -20,8 +20,8 @@ const Login = () => {
         'Content-Type': 'application/json',
       },
       data: {
-        username,
-        password,
+        username: username,
+        password: password,
       },
     };
 
