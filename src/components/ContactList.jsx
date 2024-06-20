@@ -16,7 +16,7 @@ const ContactList = ({contacts, updateContact, updateCallback}) => {
       }
     }
     try {
-      const response = await axios.get(url, options)
+      const response = await axios.delete(url, options)
       if (response.status === 200) {
         updateCallback()
         alert("Contact deleted successfully")
