@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import ContactList from './ContactList'
 import ContactForm from './ContactForm'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const Contacts = () => {
   const [contacts, setContacts] = useState([])
@@ -26,9 +27,13 @@ const Contacts = () => {
     }
 
     try {
-      const response = await fetch(url, options)
-      const data = await response.json()
-      setContacts(data.contacts)
+      const response = await axios.get(url, options)
+      if (response.status === 200) {
+        const data = response.data
+        setContacts(data.contacts)
+      } else {
+        alert('An error occurred while fetching contacts. Please try again.')
+      }
     } catch (error) {
       if (error.response && error.response.status === 401) {
         alert("Session expired. Please login again.")

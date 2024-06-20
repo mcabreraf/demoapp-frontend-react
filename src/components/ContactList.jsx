@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 const ContactList = ({contacts, updateContact, updateCallback}) => {
   const navigate = useNavigate()
@@ -14,8 +15,8 @@ const ContactList = ({contacts, updateContact, updateCallback}) => {
       }
     }
     try {
-      const response = await fetch(url, options)
-      if (response.ok) {
+      const response = await axios.get(url, options)
+      if (response.status === 200) {
         updateCallback()
         alert("Contact deleted successfully")
       } else {

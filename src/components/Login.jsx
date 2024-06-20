@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Login = () => {
 
   const handleSubmit = async (e, retryAttempt = 1) => {
     e.preventDefault();
-    const url = 'https://aws-flask-app.manuelprojectsinaws.com/login';
+    const url = 'https://aws-flask-app.manuelprojectsinaws.com/login'
     const options = {
       method: 'POST',
       headers: {
@@ -26,29 +26,29 @@ const Login = () => {
     };
 
     try {
-      const response = await axios(url, options);
+      const response = await axios(url, options)
 
       if (response.status === 200) {
-        localStorage.setItem('token', response.data.access_token);
+        localStorage.setItem('token', response.data.access_token)
         navigate('/contacts');
       } else {
-        alert('Invalid credentials. Please try again.');
+        alert('Invalid credentials. Please try again.')
       }
     } catch (error) {
       if (retryAttempt <= 3) {
         const delay = 500 * Math.pow(2, retryAttempt - 1);
-        await new Promise((resolve) => setTimeout(resolve, delay));
-        handleSubmit(e, retryAttempt + 1);
+        await new Promise((resolve) => setTimeout(resolve, delay))
+        handleSubmit(e, retryAttempt + 1)
       } else {
-        alert('Failed to log in after multiple attempts. Please try again later.');
+        alert('Failed to log in after multiple attempts. Please try again later.')
       }
     }
   };
 
   const checkToken = async (navigate) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token')
     if (token) {
-      const url = 'https://aws-flask-app.manuelprojectsinaws.com/validate-token';
+      const url = 'https://aws-flask-app.manuelprojectsinaws.com/validate-token'
       const options = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -56,19 +56,19 @@ const Login = () => {
       };
 
       try {
-        const response = await axios.get(url, options);
+        const response = await axios.get(url, options)
         if (response.status === 200) {
-          navigate('/contacts');
+          navigate('/contacts')
         }
       } catch (error) {
-        alert('Token validation failed.');
-        localStorage.removeItem('token');
+        alert('Token validation failed.')
+        localStorage.removeItem('token')
       }
     }
   };
 
   const registerButton = () => {
-    navigate('/register');
+    navigate('/register')
   };
 
   return (
@@ -84,4 +84,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Login

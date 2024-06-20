@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ContactForm = ({ existingContact = {}, updateCallback }) => {
     const [firstName, setFirstName] = useState(existingContact.firstName || "")
@@ -31,9 +32,9 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
         body: JSON.stringify(data)
       }
       try {
-        const response = await fetch(url, options)
+        const response = await axios(url, options)
 
-        if (response.ok) {
+        if (response.status === 200 || response.status === 201) {
           updateCallback()
           alert("Contact " + (updating ? "updated" : "created") + " successfully")
         } else {
