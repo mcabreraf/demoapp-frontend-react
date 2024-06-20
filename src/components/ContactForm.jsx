@@ -32,7 +32,7 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
         body: JSON.stringify(data)
       }
       try {
-        const response = updating ? await axios.patch(url, options) : await axios.post(url, options)
+        const response = await axios(url, options);
 
         if (response.status === 200 || response.status === 201) {
           updateCallback()

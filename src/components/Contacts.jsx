@@ -28,7 +28,7 @@ const Contacts = () => {
     }
 
     try {
-      const response = await axios.get(url, options)
+      const response = await axios(url, options);
       if (response.status === 200) {
         const data = response.data
         setContacts(data.contacts)

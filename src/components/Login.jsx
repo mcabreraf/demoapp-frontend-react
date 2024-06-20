@@ -26,7 +26,7 @@ const Login = () => {
     };
 
     try {
-      const response = await axios.post(url, options)
+      const response = await axios(url, options);
 
       if (response.status === 200) {
         localStorage.setItem('token', response.data.access_token)

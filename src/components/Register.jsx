@@ -24,7 +24,7 @@ const Register = () => {
     };
 
     try {
-      const response = await axios.post(url, options);
+      const response = await axios(url, options);
 
       if (response.status === 201) {
         const data = response.data;
